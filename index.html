@@ -1,0 +1,393 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  &lt;!&ndash;-->
+<!--    If you are serving your web app in a path other than the root, change the-->
+<!--    href value below to reflect the base path you are serving from.-->
+
+<!--    The path provided below has to start and end with a slash "/" in order for-->
+<!--    it to work correctly.-->
+
+<!--    For more details:-->
+<!--    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base-->
+
+<!--    This is a placeholder for base href that will be replaced by the value of-->
+<!--    the `&#45;&#45;base-href` argument provided to `flutter build`.-->
+<!--  &ndash;&gt;-->
+<!--  <base href="/">-->
+
+<!--  <meta charset="UTF-8">-->
+<!--  <meta content="IE=Edge" http-equiv="X-UA-Compatible">-->
+<!--    <meta name="description" content="Professional Flutter Developer Portfolio - Mobile & Web Development">-->
+<!--    <meta name="keywords" content="Flutter, Mobile Developer, Web Developer, Portfolio">-->
+<!--    <meta name="author" content="Your Name">-->
+
+<!--  &lt;!&ndash; iOS meta tags & icons &ndash;&gt;-->
+<!--  <meta name="mobile-web-app-capable" content="yes">-->
+<!--  <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+<!--  <meta name="apple-mobile-web-app-title" content="myflutterportfolio">-->
+<!--  <link rel="apple-touch-icon" href="icons/Icon-192.png">-->
+
+<!--  &lt;!&ndash; Favicon &ndash;&gt;-->
+<!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
+
+<!--  <title>myflutterportfolio</title>-->
+<!--  <link rel="manifest" href="manifest.json">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <script src="flutter_bootstrap.js" async></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
+
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
+
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Professional Flutter Developer Portfolio - Mobile & Web Development">
+    <meta name="keywords" content="Flutter, Mobile Developer, Web Developer, Portfolio">
+    <meta name="author" content="Your Name">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="myflutterportfolio">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <title>Flutter Developer Portfolio</title>
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        /* Initial loading screen styles */
+        body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+
+        #loading-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #0A0E27 0%, #151932 50%, #1E2341 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          transition: opacity 0.5s ease-out;
+        }
+
+        #loading-screen.fade-out {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        /* Animated gradient orbs */
+        .orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(60px);
+          opacity: 0.15;
+          animation: pulse 3s ease-in-out infinite;
+        }
+
+        .orb-1 {
+          width: 300px;
+          height: 300px;
+          background: #6C5CE7;
+          top: 10%;
+          left: 10%;
+          animation-delay: 0s;
+        }
+
+        .orb-2 {
+          width: 250px;
+          height: 250px;
+          background: #00D9FF;
+          bottom: 10%;
+          right: 10%;
+          animation-delay: 1.5s;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.15;
+          }
+          50% {
+            transform: scale(1.1);
+            opacity: 0.25;
+          }
+        }
+
+        /* Loader container */
+        .loader-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 1;
+        }
+
+        /* Rotating rings */
+        .rings {
+          position: relative;
+          width: 200px;
+          height: 200px;
+          margin-bottom: 40px;
+        }
+
+        .ring {
+          position: absolute;
+          border-radius: 50%;
+          border: 3px solid transparent;
+        }
+
+        .ring-outer {
+          width: 180px;
+          height: 180px;
+          top: 10px;
+          left: 10px;
+          border-top-color: #6C5CE7;
+          border-right-color: #00D9FF;
+          animation: rotate 2s linear infinite;
+        }
+
+        .ring-middle {
+          width: 130px;
+          height: 130px;
+          top: 35px;
+          left: 35px;
+          border-top-color: #00D9FF;
+          border-right-color: #FF6B6B;
+          animation: rotate-reverse 1.5s linear infinite;
+        }
+
+        .ring-inner {
+          width: 80px;
+          height: 80px;
+          top: 60px;
+          left: 60px;
+          background: linear-gradient(135deg, #6C5CE7, #8B7FF4);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
+          animation: pulse-inner 1.5s ease-in-out infinite;
+        }
+
+        .ring-inner svg {
+          width: 40px;
+          height: 40px;
+          fill: white;
+        }
+
+        @keyframes rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotate-reverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+
+        @keyframes pulse-inner {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
+          }
+          50% {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(108, 92, 231, 0.9);
+          }
+        }
+
+        /* Loading text */
+        .loading-text {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-size: 28px;
+          font-weight: bold;
+          color: white;
+          letter-spacing: 4px;
+          margin-bottom: 30px;
+          background: linear-gradient(90deg, #6C5CE7, #00D9FF, #6C5CE7);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+          0% { background-position: 0% center; }
+          100% { background-position: 200% center; }
+        }
+
+        /* Progress bar */
+        .progress-container {
+          width: 350px;
+          max-width: 90vw;
+          margin-bottom: 20px;
+        }
+
+        .progress-bar {
+          width: 100%;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #6C5CE7, #00D9FF);
+          border-radius: 10px;
+          width: 0%;
+          animation: loading-progress 2s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+
+        @keyframes loading-progress {
+          0% { width: 0%; }
+          50% { width: 70%; }
+          100% { width: 100%; }
+        }
+
+        /* Loading message */
+        .loading-message {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-size: 14px;
+          color: #B8B9C9;
+          letter-spacing: 1px;
+          animation: fade-in-out 2s ease-in-out infinite;
+        }
+
+        @keyframes fade-in-out {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .rings {
+            width: 150px;
+            height: 150px;
+          }
+
+          .ring-outer {
+            width: 140px;
+            height: 140px;
+            top: 5px;
+            left: 5px;
+          }
+
+          .ring-middle {
+            width: 100px;
+            height: 100px;
+            top: 25px;
+            left: 25px;
+          }
+
+          .ring-inner {
+            width: 60px;
+            height: 60px;
+            top: 45px;
+            left: 45px;
+          }
+
+          .ring-inner svg {
+            width: 30px;
+            height: 30px;
+          }
+
+          .loading-text {
+            font-size: 22px;
+          }
+
+          .orb-1, .orb-2 {
+            width: 200px;
+            height: 200px;
+          }
+        }
+    </style>
+</head>
+<body>
+<!-- Initial Loading Screen -->
+<div id="loading-screen">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="loader-container">
+        <div class="rings">
+            <div class="ring ring-outer"></div>
+            <div class="ring ring-middle"></div>
+            <div class="ring ring-inner">
+                <!-- Code icon SVG -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M8.7,15.9L4.8,12l3.9-3.9c0.39-0.39,0.39-1.01,0-1.4l0,0c-0.39-0.39-1.01-0.39-1.4,0l-4.59,4.59 c-0.39,0.39-0.39,1.02,0,1.41l4.59,4.59c0.39,0.39,1.01,0.39,1.4,0l0,0C9.09,16.91,9.09,16.29,8.7,15.9z M15.3,15.9l3.9-3.9 l-3.9-3.9c-0.39-0.39-0.39-1.01,0-1.4l0,0c0.39-0.39,1.01-0.39,1.4,0l4.59,4.59c0.39,0.39,0.39,1.02,0,1.41l-4.59,4.59 c-0.39,0.39-1.01,0.39-1.4,0l0,0C14.91,16.91,14.91,16.29,15.3,15.9z"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="loading-text">LOADING PORTFOLIO</div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="loading-message">Initializing...</div>
+    </div>
+</div>
+
+<script>
+    // Remove loading screen when Flutter app is ready
+    window.addEventListener('flutter-first-frame', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.classList.add('fade-out');
+      setTimeout(function() {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    });
+
+    // Fallback: Remove loading screen after 5 seconds if flutter-first-frame doesn't fire
+    setTimeout(function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      if (loadingScreen && loadingScreen.style.display !== 'none') {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(function() {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }
+    }, 5000);
+</script>
+
+<script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
