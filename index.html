@@ -1,391 +1,344 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--  &lt;!&ndash;-->
-<!--    If you are serving your web app in a path other than the root, change the-->
-<!--    href value below to reflect the base path you are serving from.-->
-
-<!--    The path provided below has to start and end with a slash "/" in order for-->
-<!--    it to work correctly.-->
-
-<!--    For more details:-->
-<!--    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base-->
-
-<!--    This is a placeholder for base href that will be replaced by the value of-->
-<!--    the `&#45;&#45;base-href` argument provided to `flutter build`.-->
-<!--  &ndash;&gt;-->
-<!--  <base href="/">-->
-
-<!--  <meta charset="UTF-8">-->
-<!--  <meta content="IE=Edge" http-equiv="X-UA-Compatible">-->
-<!--    <meta name="description" content="Professional Flutter Developer Portfolio - Mobile & Web Development">-->
-<!--    <meta name="keywords" content="Flutter, Mobile Developer, Web Developer, Portfolio">-->
-<!--    <meta name="author" content="Your Name">-->
-
-<!--  &lt;!&ndash; iOS meta tags & icons &ndash;&gt;-->
-<!--  <meta name="mobile-web-app-capable" content="yes">-->
-<!--  <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
-<!--  <meta name="apple-mobile-web-app-title" content="myflutterportfolio">-->
-<!--  <link rel="apple-touch-icon" href="icons/Icon-192.png">-->
-
-<!--  &lt;!&ndash; Favicon &ndash;&gt;-->
-<!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
-
-<!--  <title>myflutterportfolio</title>-->
-<!--  <link rel="manifest" href="manifest.json">-->
-<!--</head>-->
-<!--<body>-->
-<!--  <script src="flutter_bootstrap.js" async></script>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
-
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
-    -->
-
-
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="description" content="Professional Flutter Developer Portfolio - Mobile & Web Development">
     <meta name="keywords" content="Flutter, Mobile Developer, Web Developer, Portfolio">
-    <meta name="author" content="Your Name">
-
-    <!-- iOS meta tags & icons -->
+    <meta name="author" content="Jaydeep Poojary">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="myflutterportfolio">
-    <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-    <!-- Favicon -->
+    <meta name="apple-mobile-web-app-title" content="welcometomyflutterportfolio">
+    <link rel="apple-touch-icon" href="icons/android-chrome-192x192.png">
     <link rel="icon" type="image/png" href="favicon.png"/>
-
-    <title>Flutter Developer Portfolio</title>
+    <title>Welcome to Jaydeep`s Portfolio</title>
     <link rel="manifest" href="manifest.json">
 
     <style>
-        /* Initial loading screen styles */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-          margin: 0;
-          padding: 0;
           overflow: hidden;
+          background: #0A0E27;
+          font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
+        /* ── Screen ───────────────────────────────────────────────────────── */
         #loading-screen {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #0A0E27 0%, #151932 50%, #1E2341 100%);
+          inset: 0;
+          background: linear-gradient(135deg, #0A0E27 0%, #151932 52%, #1E2341 100%);
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
           z-index: 9999;
-          transition: opacity 0.5s ease-out;
+          transition: opacity 0.6s ease-out;
         }
-
         #loading-screen.fade-out {
           opacity: 0;
           pointer-events: none;
         }
 
-        /* Animated gradient orbs */
+        /* ── Dot-grid overlay ─────────────────────────────────────────────── */
+        #loading-screen::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle, rgba(108,92,231,.06) 1.2px, transparent 1.2px);
+          background-size: 36px 36px;
+          pointer-events: none;
+        }
+
+        /* ── Orbs ─────────────────────────────────────────────────────────── */
         .orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(60px);
-          opacity: 0.15;
-          animation: pulse 3s ease-in-out infinite;
+          filter: blur(72px);
+          pointer-events: none;
+          animation: orbPulse 3s ease-in-out infinite;
+        }
+        .orb-1 { width:360px; height:360px; background:#6C5CE7; top:5%;   left:4%;  opacity:.13; animation-delay:0s;   }
+        .orb-2 { width:280px; height:280px; background:#00D9FF; bottom:5%; right:3%; opacity:.13; animation-delay:1.4s; }
+        .orb-3 { width:200px; height:200px; background:#FF6B6B; top:52%;  left:56%; opacity:.09; animation-delay:0.7s; }
+
+        @keyframes orbPulse {
+          0%,100% { transform:scale(1);   opacity:.14; }
+          50%      { transform:scale(1.2); opacity:.24; }
         }
 
-        .orb-1 {
-          width: 300px;
-          height: 300px;
-          background: #6C5CE7;
-          top: 10%;
-          left: 10%;
-          animation-delay: 0s;
+        /* ── Particles ────────────────────────────────────────────────────── */
+        .particles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+        .particle  { position:absolute; border-radius:50%; animation:floatUp 6s ease-in-out infinite; }
+        @keyframes floatUp {
+          0%,100% { transform:translateY(0);    opacity:0;  }
+          20%      {                             opacity:.5; }
+          50%      { transform:translateY(-60px);            }
+          80%      {                             opacity:.3; }
         }
 
-        .orb-2 {
-          width: 250px;
-          height: 250px;
-          background: #00D9FF;
-          bottom: 10%;
-          right: 10%;
-          animation-delay: 1.5s;
-        }
-
-        @keyframes pulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.15;
-          }
-          50% {
-            transform: scale(1.1);
-            opacity: 0.25;
-          }
-        }
-
-        /* Loader container */
+        /* ── Centre content ───────────────────────────────────────────────── */
         .loader-container {
           position: relative;
+          z-index: 2;
           display: flex;
           flex-direction: column;
           align-items: center;
-          z-index: 1;
+          animation: fadeUp .9s ease-out both;
+        }
+        @keyframes fadeUp {
+          from { opacity:0; transform:translateY(20px); }
+          to   { opacity:1; transform:translateY(0);    }
         }
 
-        /* Rotating rings */
-        .rings {
-          position: relative;
-          width: 200px;
-          height: 200px;
-          margin-bottom: 40px;
+        /* ── Logo mark ────────────────────────────────────────────────────── */
+        .logo-mark {
+          width:80px; height:80px;
+          border-radius:22px;
+          background: linear-gradient(135deg, #6C5CE7, #00D9FF);
+          display:flex; align-items:center; justify-content:center;
+          box-shadow: 0 0 40px rgba(108,92,231,.45), 0 6px 24px rgba(0,217,255,.2);
+          animation: logoPulse 2.8s ease-in-out infinite;
+          margin-bottom: 44px;
+        }
+        .logo-mark svg { width:40px; height:40px; fill:#fff; }
+        @keyframes logoPulse {
+          0%,100% { box-shadow: 0 0 32px rgba(108,92,231,.40), 0 6px 20px rgba(0,217,255,.20); }
+          50%      { box-shadow: 0 0 56px rgba(108,92,231,.70), 0 8px 32px rgba(0,217,255,.40); }
         }
 
-        .ring {
-          position: absolute;
-          border-radius: 50%;
-          border: 3px solid transparent;
+        /* ── Bars visualiser ──────────────────────────────────────────────── */
+        .bars {
+          display:flex;
+          align-items:flex-end;
+          gap:7px;
+          height:64px;
+          margin-bottom:44px;
+        }
+        .bar {
+          width:7px;
+          border-radius:4px;
+          animation: barWave 1.2s ease-in-out infinite alternate;
+        }
+        /* Staggered peak heights & delays: purple → cyan */
+        .bar:nth-child(1)  { background:#6C5CE7; animation-delay:0.00s; --p:26px; }
+        .bar:nth-child(2)  { background:#7B68EE; animation-delay:0.08s; --p:45px; }
+        .bar:nth-child(3)  { background:#8A73F0; animation-delay:0.16s; --p:64px; }
+        .bar:nth-child(4)  { background:#977CF2; animation-delay:0.24s; --p:38px; }
+        .bar:nth-child(5)  { background:#A486F4; animation-delay:0.32s; --p:54px; }
+        .bar:nth-child(6)  { background:#6EBBFF; animation-delay:0.40s; --p:32px; }
+        .bar:nth-child(7)  { background:#38CAFF; animation-delay:0.48s; --p:58px; }
+        .bar:nth-child(8)  { background:#18D5FF; animation-delay:0.56s; --p:42px; }
+        .bar:nth-child(9)  { background:#00D9FF; animation-delay:0.64s; --p:48px; }
+        .bar:nth-child(10) { background:#18D5FF; animation-delay:0.72s; --p:29px; }
+        .bar:nth-child(11) { background:#38CAFF; animation-delay:0.80s; --p:51px; }
+        .bar:nth-child(12) { background:#6EBBFF; animation-delay:0.88s; --p:35px; }
+        @keyframes barWave {
+          from { height:4px;      box-shadow:none; }
+          to   { height:var(--p); box-shadow: 0 0 8px currentColor; }
         }
 
-        .ring-outer {
-          width: 180px;
-          height: 180px;
-          top: 10px;
-          left: 10px;
-          border-top-color: #6C5CE7;
-          border-right-color: #00D9FF;
-          animation: rotate 2s linear infinite;
+        /* ── Title ────────────────────────────────────────────────────────── */
+        .loading-title {
+          font-size:30px; font-weight:800; letter-spacing:5px;
+          color:#fff;
+          background: linear-gradient(90deg, #6C5CE7, #00D9FF, #fff, #00D9FF, #6C5CE7);
+          background-size:300% auto;
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+          animation: shimmer 2s linear infinite;
+          margin-bottom:10px; text-align:center;
         }
-
-        .ring-middle {
-          width: 130px;
-          height: 130px;
-          top: 35px;
-          left: 35px;
-          border-top-color: #00D9FF;
-          border-right-color: #FF6B6B;
-          animation: rotate-reverse 1.5s linear infinite;
+        .loading-subtitle {
+          font-size:12px; font-weight:500; letter-spacing:3px;
+          color:rgba(0,217,255,.7);
+          margin-bottom:50px; text-align:center;
         }
-
-        .ring-inner {
-          width: 80px;
-          height: 80px;
-          top: 60px;
-          left: 60px;
-          background: linear-gradient(135deg, #6C5CE7, #8B7FF4);
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
-          animation: pulse-inner 1.5s ease-in-out infinite;
-        }
-
-        .ring-inner svg {
-          width: 40px;
-          height: 40px;
-          fill: white;
-        }
-
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes rotate-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-
-        @keyframes pulse-inner {
-          0%, 100% {
-            transform: scale(1);
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
-          }
-          50% {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(108, 92, 231, 0.9);
-          }
-        }
-
-        /* Loading text */
-        .loading-text {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          font-size: 28px;
-          font-weight: bold;
-          color: white;
-          letter-spacing: 4px;
-          margin-bottom: 30px;
-          background: linear-gradient(90deg, #6C5CE7, #00D9FF, #6C5CE7);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 3s linear infinite;
-        }
-
         @keyframes shimmer {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
+          0%   { background-position:0%   center; }
+          100% { background-position:300% center; }
         }
 
-        /* Progress bar */
-        .progress-container {
-          width: 350px;
-          max-width: 90vw;
-          margin-bottom: 20px;
+        /* ── Progress ─────────────────────────────────────────────────────── */
+        .progress-wrapper { width:360px; max-width:88vw; }
+        .progress-meta {
+          display:flex; justify-content:space-between; align-items:center;
+          margin-bottom:10px;
         }
-
-        .progress-bar {
-          width: 100%;
-          height: 6px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-          overflow: hidden;
-          position: relative;
+        .progress-label { font-size:11px; letter-spacing:1.2px; color:#6E7191; }
+        .progress-pct   {
+          font-family:'Courier New', Courier, monospace;
+          font-size:16px; font-weight:700; letter-spacing:2px; color:#00D9FF;
         }
-
+        .progress-track {
+          width:100%; height:6px;
+          background:rgba(30,35,65,.9);
+          border-radius:10px;
+          border:1px solid rgba(108,92,231,.15);
+          overflow:hidden; position:relative;
+        }
         .progress-fill {
-          height: 100%;
+          height:100%; width:0%;
+          border-radius:10px;
           background: linear-gradient(90deg, #6C5CE7, #00D9FF);
-          border-radius: 10px;
-          width: 0%;
-          animation: loading-progress 2s ease-in-out infinite;
-          box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+          box-shadow: 0 0 12px rgba(0,217,255,.6);
+          transition: width .35s cubic-bezier(.4,0,.2,1);
+          position:relative;
+        }
+        /* Glint on fill bar */
+        .progress-fill::after {
+          content:'';
+          position:absolute; top:0; right:0;
+          width:40px; height:100%;
+          background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+          animation: glint 1.4s ease-in-out infinite;
+        }
+        @keyframes glint {
+          0%   { transform:translateX(-40px); opacity:0; }
+          50%  {                              opacity:1; }
+          100% { transform:translateX(40px);  opacity:0; }
         }
 
-        @keyframes loading-progress {
-          0% { width: 0%; }
-          50% { width: 70%; }
-          100% { width: 100%; }
+        /* ── Status ───────────────────────────────────────────────────────── */
+        .status-msg {
+          margin-top:18px; font-size:13px; letter-spacing:1.2px;
+          color:#6E7191; text-align:center; min-height:18px;
+          transition:opacity .4s;
         }
 
-        /* Loading message */
-        .loading-message {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          font-size: 14px;
-          color: #B8B9C9;
-          letter-spacing: 1px;
-          animation: fade-in-out 2s ease-in-out infinite;
-        }
-
-        @keyframes fade-in-out {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 1; }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-          .rings {
-            width: 150px;
-            height: 150px;
-          }
-
-          .ring-outer {
-            width: 140px;
-            height: 140px;
-            top: 5px;
-            left: 5px;
-          }
-
-          .ring-middle {
-            width: 100px;
-            height: 100px;
-            top: 25px;
-            left: 25px;
-          }
-
-          .ring-inner {
-            width: 60px;
-            height: 60px;
-            top: 45px;
-            left: 45px;
-          }
-
-          .ring-inner svg {
-            width: 30px;
-            height: 30px;
-          }
-
-          .loading-text {
-            font-size: 22px;
-          }
-
-          .orb-1, .orb-2 {
-            width: 200px;
-            height: 200px;
-          }
+        /* ── Responsive ───────────────────────────────────────────────────── */
+        @media (max-width:500px) {
+          .logo-mark { width:64px; height:64px; border-radius:17px; margin-bottom:32px; }
+          .logo-mark svg { width:30px; height:30px; }
+          .bars       { height:48px; gap:5px; margin-bottom:32px; }
+          .bar        { width:5px; }
+          .loading-title    { font-size:20px; letter-spacing:3px; }
+          .loading-subtitle { font-size:10px; }
+          .progress-wrapper { width:280px; }
+          .progress-pct     { font-size:14px; }
         }
     </style>
 </head>
 <body>
-<!-- Initial Loading Screen -->
+
 <div id="loading-screen">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="particles" id="particles"></div>
 
     <div class="loader-container">
-        <div class="rings">
-            <div class="ring ring-outer"></div>
-            <div class="ring ring-middle"></div>
-            <div class="ring ring-inner">
-                <!-- Code icon SVG -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M8.7,15.9L4.8,12l3.9-3.9c0.39-0.39,0.39-1.01,0-1.4l0,0c-0.39-0.39-1.01-0.39-1.4,0l-4.59,4.59 c-0.39,0.39-0.39,1.02,0,1.41l4.59,4.59c0.39,0.39,1.01,0.39,1.4,0l0,0C9.09,16.91,9.09,16.29,8.7,15.9z M15.3,15.9l3.9-3.9 l-3.9-3.9c-0.39-0.39-0.39-1.01,0-1.4l0,0c0.39-0.39,1.01-0.39,1.4,0l4.59,4.59c0.39,0.39,0.39,1.02,0,1.41l-4.59,4.59 c-0.39,0.39-1.01,0.39-1.4,0l0,0C14.91,16.91,14.91,16.29,15.3,15.9z"/>
-                </svg>
+
+        <!-- Logo -->
+        <div class="logo-mark">
+            <svg viewBox="0 0 24 24">
+                <path d="M8.7 15.9L4.8 12l3.9-3.9c.39-.39.39-1.01
+          0-1.4-.39-.39-1.01-.39-1.4 0L2.71 11.29c-.39.39-.39
+          1.02 0 1.41L7.3 17.3c.39.39 1.01.39 1.4 0 .39-.39.39-1.01
+          0-1.4zm6.6 0l3.9-3.9-3.9-3.9c-.39-.39-.39-1.01
+          0-1.4.39-.39 1.01-.39 1.4 0l4.59 4.59c.39.39.39
+          1.02 0 1.41L16.7 17.3c-.39.39-1.01.39-1.4
+          0-.39-.39-.39-1.01 0-1.4z"/>
+            </svg>
+        </div>
+
+        <!-- Bars -->
+        <div class="bars">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+
+        <!-- Title -->
+        <div class="loading-title">LOADING PORTFOLIO</div>
+        <div class="loading-subtitle">WELCOME TO MY PORTFOLIO</div>
+
+        <!-- Progress -->
+        <div class="progress-wrapper">
+            <div class="progress-meta">
+                <span class="progress-label">Loading...</span>
+                <span class="progress-pct" id="pct">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
             </div>
         </div>
 
-        <div class="loading-text">LOADING PORTFOLIO</div>
-
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-
-        <div class="loading-message">Initializing...</div>
+        <div class="status-msg" id="status-msg">Initializing...</div>
     </div>
 </div>
 
 <script>
-    // Remove loading screen when Flutter app is ready
-    window.addEventListener('flutter-first-frame', function() {
-      const loadingScreen = document.getElementById('loading-screen');
-      loadingScreen.classList.add('fade-out');
-      setTimeout(function() {
-        loadingScreen.style.display = 'none';
-      }, 500);
+    /* ── Particles ──────────────────────────────────────────────────────────── */
+    (function(){
+      const c = document.getElementById('particles');
+      const cols = ['#6C5CE7','#00D9FF','#8B7FF4'];
+      for(let i=0;i<14;i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const s = 2 + Math.random()*2.5;
+        p.style.cssText = [
+          `width:${s}px`,`height:${s}px`,
+          `left:${Math.random()*100}%`,
+          `top:${20+Math.random()*60}%`,
+          `background:${cols[i%cols.length]}`,
+          `animation-delay:${Math.random()*6}s`,
+          `animation-duration:${4+Math.random()*4}s`,
+        ].join(';');
+        c.appendChild(p);
+      }
+    })();
+
+    /* ── Progress ───────────────────────────────────────────────────────────── */
+    const msgs = [
+      [0,    'Initializing...'],
+      [0.25, 'Loading assets...'],
+      [0.55, 'Preparing UI...'],
+      [0.85, 'Almost ready...'],
+    ];
+    const fillEl = document.getElementById('progress-fill');
+    const pctEl  = document.getElementById('pct');
+    const msgEl  = document.getElementById('status-msg');
+
+    function setProgress(v){
+      v = Math.min(v,1);
+      const pct = Math.round(v*100);
+      fillEl.style.width = pct+'%';
+      pctEl.textContent  = pct+'%';
+      const m = msgs.filter(x => v >= x[0]).pop();
+      if(m) msgEl.textContent = m[1];
+    }
+
+    let sim = 0;
+    const ticker = setInterval(()=>{
+      sim += 0.012;
+      setProgress(Math.min(sim, 0.92));
+      if(sim >= 0.92) clearInterval(ticker);
+    }, 60);
+
+    /* ── Flutter ready ──────────────────────────────────────────────────────── */
+    window.addEventListener('flutter-first-frame', function(){
+      clearInterval(ticker);
+      setProgress(1);
+      setTimeout(function(){
+        const el = document.getElementById('loading-screen');
+        el.classList.add('fade-out');
+        setTimeout(()=> el.style.display='none', 620);
+      }, 300);
     });
 
-    // Fallback: Remove loading screen after 5 seconds if flutter-first-frame doesn't fire
-    setTimeout(function() {
-      const loadingScreen = document.getElementById('loading-screen');
-      if (loadingScreen && loadingScreen.style.display !== 'none') {
-        loadingScreen.classList.add('fade-out');
-        setTimeout(function() {
-          loadingScreen.style.display = 'none';
-        }, 500);
+    /* Fallback 8 s */
+    setTimeout(function(){
+      clearInterval(ticker);
+      const el = document.getElementById('loading-screen');
+      if(el && el.style.display !== 'none'){
+        setProgress(1);
+        setTimeout(()=>{
+          el.classList.add('fade-out');
+          setTimeout(()=> el.style.display='none', 620);
+        }, 300);
       }
-    }, 5000);
+    }, 8000);
 </script>
 
 <script src="flutter_bootstrap.js" async></script>
